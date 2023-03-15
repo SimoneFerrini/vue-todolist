@@ -12,10 +12,13 @@
 
     <div id="app">
         <ul>
-            <li v-for="(item, index) in todosList">
-                {{item.text}} - <span @click="deleteTodo(index)">&cross;</span>
+            <li v-for="(todo, index) in todosList">
+               <span>{{todo.text}}</span> - <span @click="deleteTodo(index)" style="color:red"> &cross;</span>
             </li>
         </ul>
+        <hr>
+        <input v-model="newTodo.text" type="text" placeholder="new item" @keyup.enter="addTodo()">
+        <button @click="addTodo()">ADD</button>
     </div>
 
 

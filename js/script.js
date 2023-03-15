@@ -30,10 +30,36 @@ Buon lavoro e buon divertimento!
 
 const { createApp } = Vue
 
-  createApp({
+createApp({
     data() {
-      return {
-        todosList:[{}],
-      }
+
+
+        return {
+            todosList: [
+            ],
+            newTodo: {
+                text: "",
+                done: false
+            }
+
+        }
+
+    },
+
+    methods: {
+        deleteTodo(indice) {
+            this.todosList.splice(indice, 1);
+        },
+
+        addTodo() {
+            toDo = this.newTodo;
+            this.todosList.push(toDo)
+            this.newTodo={
+                text:"",
+                done:false
+            }
+        }
     }
-  }).mount('#app')
+
+
+}).mount('#app')
