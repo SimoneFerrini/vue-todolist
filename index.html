@@ -5,20 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VUE todoLIst</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
     <div id="app">
+        <h1>La mia lista:</h1>
         <ul>
             <li v-for="(todo, index) in todosList">
-               <span>{{todo.text}}</span> - <span @click="deleteTodo(index)" style="color:red"> &cross;</span>
+               <span @click="todo.done = !todo.done" :class="todo.done ? 'lined' : ''">{{todo.text}}</span> - <span @click="deleteTodo(index)" style="color:red"> &cross;</span>
             </li>
         </ul>
         <hr>
         <input v-model="newTodo.text" type="text" placeholder="new item" @keyup.enter="addTodo()">
-        <button @click="addTodo()">ADD</button>
+        <button @click="addTodo(todo.done)" class="my-btn">ADD</button>
     </div>
 
 
